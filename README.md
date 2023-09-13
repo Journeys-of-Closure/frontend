@@ -6,6 +6,7 @@ Eternal Echoes is a unique and heartfelt project dedicated to preserving memorie
 
 - [About Eternal Echoes](#about-eternal-echoes)
 - [Features](#key-features)
+- [Mockup](#mockup)
 - [Contributing](#contributing)
 - [Acknowledgments](#acknowledgments)
 - [License](#license)
@@ -21,6 +22,10 @@ Eternal Echoes is more than just a game; it's a digital memorial where users can
 - **Customizable Characters:** Users have the option to customize characters that sail within boats on the water. These characters represent the users and make their way through the tranquil waters.
 
 - **Shared Memories:** In addition to their own memories, users can view and interact with memories created by others. This fosters a sense of community and connection as people come together to celebrate the lives of countless individuals.
+
+## Mockup
+
+[Eternal Echoes - Figma Project](https://www.figma.com/file/iTZf53q4ofeS610Ktkux5n/Eternal-Echoes?type=design&node-id=0-1&mode=design&t=ohtFt6wGRLZ7nUo4-0)
 
 ## Contributing
 Since this is a personal project created for me to apply and test my skills on development, until we reach a certain phase of productivity i'll be not accepting any contributions, but we are certainly welcome to contributions in the future to make Eternal Echoes even more special and meaningful. Feel free to open issues, create pull requests, or reach out to us with your ideas and suggestions.
