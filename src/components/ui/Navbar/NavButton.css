@@ -1,0 +1,28 @@
+.navButton {
+    flex: 1;
+    padding: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.navButton:first-child {
+    border: solid black 0.2vw;
+    border-top-left-radius: 1vw;
+    border-bottom-left-radius: 1vw;
+}
+
+.navButton:nth-child(2) {
+    border-right: solid black 0.2vw;
+}
+
+.navButton:nth-child(2), .navButton:nth-child(3) {
+    border-top: solid black 0.2vw;
+    border-bottom: solid black 0.2vw;
+}
+
+.navButton:last-child {
+    border: solid black 0.2vw;
+    border-top-right-radius: 1vw;
+    border-bottom-right-radius: 1vw;
+}
