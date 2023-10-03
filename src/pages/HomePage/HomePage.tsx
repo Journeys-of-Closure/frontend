@@ -1,4 +1,3 @@
-
 import {NavBar} from '../../components/ui/Navbar/NavBar'
 import './HomePage.css';
 function HomeSection () {
