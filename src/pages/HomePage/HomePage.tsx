@@ -22,11 +22,12 @@ function HomeSection () {
 }
 
 function HomePage() {
+  
     return (
-        <>
-            <NavBar/>
-            <HomeSection/>
-        </>
+      <>
+        <NavBar/>
+        <HomeSection />
+      </>
     );
 }
 
