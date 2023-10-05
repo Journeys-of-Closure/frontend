@@ -1,0 +1,106 @@
+#loginform-container {
+    display:flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin: 0 0.5vw 0 0.5vw;
+}
+
+/* USERNAME */
+
+#username-container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding-top: 4vh;
+    justify-content: center;
+}
+
+#username-label {
+    display: flex;
+    margin-bottom: 0.3vw;
+}
+
+#username-input {
+    display: flex;
+    height: 5vh;
+    border: solid black 0.1vw;
+    border-radius: 0.3vw;
+    font-size: 3vh;
+}
+
+/* PASSWORD*/
+
+#password-container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+#password-label {
+    display: flex;
+    margin-bottom: 0.3vw;
+}
+
+#password-input {
+    display:flex;
+    height: 5vh;
+    border: solid black 0.1vw;
+    border-radius: 0.3vw;
+    font-size: 3vh;
+}
+
+#rec-pw-btn {
+    display: flex;
+    justify-content: end;
+    font-size: 1vw;
+    margin-top: 1%;
+    padding-right: 1%;
+    font-style: italic;
+    color: #0057FF;
+    cursor: pointer;
+}
+
+/* LOGIN BUTTON */
+#login-btn {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    height: 5vh;
+    margin: 0 1.5vw 1vw 1.5vw;
+    background-color: #376FFF;
+    color: white;
+    border-style: none;
+    font-size: 1.3vw;
+    font-weight: 100;
+    border-radius: 0.2vw;
+    cursor: pointer;
+    background-position: center;
+    transition: background 0.8s;
+}
+
+
+#login-btn:hover {
+    background: #1658ff radial-gradient(circle, transparent 1%, #034aff 1%) center/15000%;
+}
+
+#login-btn:active {
+    background-color: #5888ff;
+    background-size: 100%;
+    transition: background 0s;
+}
+
+/* SIGN UP TEXT */
+
+#signup-text {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 1vw;
+}
+
+#signup-btn {
+    padding-left: 1%;
+    color: #0066FF;
+    cursor: pointer;
+}
