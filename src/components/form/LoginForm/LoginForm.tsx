@@ -1,19 +1,19 @@
-import { useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import './LoginForm.css';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleUsernameChange = (e: any) => {
+  const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
   };
 
-  const handlePasswordChange = (e: any) => {
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // Send the username and password to the Node.js server for authentication
