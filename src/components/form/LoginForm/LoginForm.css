@@ -5,7 +5,6 @@
     margin: 0 0.5vw 0 0.5vw;
 }
 
-
 /* USERNAME */
 
 #username-container {
@@ -58,6 +57,7 @@
     padding-right: 1%;
     font-style: italic;
     color: #0057FF;
+    cursor: pointer;
 }
 
 /* LOGIN BUTTON */
@@ -74,6 +74,20 @@
     font-size: 1.3vw;
     font-weight: 100;
     border-radius: 0.2vw;
+    cursor: pointer;
+    background-position: center;
+    transition: background 0.8s;
+}
+
+
+#login-btn:hover {
+    background: #1658ff radial-gradient(circle, transparent 1%, #034aff 1%) center/15000%;
+}
+
+#login-btn:active {
+    background-color: #5888ff;
+    background-size: 100%;
+    transition: background 0s;
 }
 
 /* SIGN UP TEXT */
@@ -88,4 +102,5 @@
 #signup-btn {
     padding-left: 1%;
     color: #0066FF;
+    cursor: pointer;
 }

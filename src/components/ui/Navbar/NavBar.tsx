@@ -1,24 +1,23 @@
-import { NavLink } from 'react-router-dom';
 import './NavBar.css'
 import LoginModal from '../../../pages/SignInPage/LoginModal';
 import useModal from '../../../hooks/useModal';
-import LoginForm from '../../form/LoginForm';
+import LoginForm from '../../form/LoginForm/LoginForm';
 
 export function NavBar() {
     const { isOpen, toggle } = useModal();
     return (
         <>
             <div id='navbar'>
-                <NavLink className='link-container' to='/memorial-waters'>
+                <div className='nav-btn'>
                     <p>Memorial Waters</p>
-                </NavLink>
-                <NavLink className='link-container' to='/light-of-giving'>
+                </div>
+                <div className='nav-btn'>
                     <p>Light of Giving</p>
-                </NavLink>
-                <div className='link-container'>
+                </div>
+                <div className='nav-btn'>
                     <p>Help & Support</p>
                 </div>
-                <div className='link-container' onClick={toggle}>
+                <div className={`nav-btn ${isOpen ? 'active' : ''}`} onClick={toggle}>
                     <p>Login</p>
                 </div>
             </div>
