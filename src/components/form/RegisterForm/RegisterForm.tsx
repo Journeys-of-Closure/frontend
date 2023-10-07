@@ -1,7 +1,12 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import './RegisterForm.css'; // Update the CSS file name if needed
 
-function RegisterForm() {
+interface RegisterFormProps {
+  toggleForm: () => void; // Tipo da prop
+}
+
+
+function RegisterForm(prop: RegisterFormProps) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -91,8 +96,8 @@ function RegisterForm() {
         )}
       </form>
       <button id="register-btn" type="submit">Register</button>
-      <div id="login-text">
-        <p>Already have an account?</p> <p id="login-btn"> Login </p>
+      <div id="signin-text">
+        <p>Already have an account?</p> <p id="signin-btn" onClick={prop.toggleForm}> Log in </p>
       </div>
     </>
   );

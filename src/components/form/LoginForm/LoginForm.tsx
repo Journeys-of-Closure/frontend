@@ -1,7 +1,11 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import './LoginForm.css';
 
-function LoginForm() {
+interface LoginFormProps {
+  toggleForm: () => void; // Tipo da prop
+}
+
+function LoginForm(prop: LoginFormProps) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -65,7 +69,7 @@ function LoginForm() {
       </form>
       <button id="login-btn" type="submit">Login</button>
       <div id="signup-text">
-        <p>Don't have an account yet?</p> <p id="signup-btn"> Sign Up </p>
+        <p>Don't have an account yet?</p> <p id="signup-btn" onClick={prop.toggleForm}> Sign Up </p>
       </div>
     </>
   );
