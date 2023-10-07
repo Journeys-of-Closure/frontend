@@ -1,4 +1,4 @@
-#loginform-container {
+#registerform-container {
     display:flex;
     flex-direction: column;
     flex-grow: 1;
@@ -11,8 +11,7 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    padding-top: 4vh;
-    justify-content: center;
+    justify-content: end;
 }
 
 #username-label {
@@ -34,6 +33,7 @@
     display: flex;
     flex: 1;
     flex-direction: column;
+    justify-content: center;
 }
 
 #password-label {
@@ -49,19 +49,30 @@
     font-size: 3vh;
 }
 
-#rec-pw-btn {
+/* CONFIRM PASSWORD*/
+
+#confirm-password-container {
     display: flex;
-    justify-content: end;
-    font-size: 1vw;
-    margin-top: 1%;
-    padding-right: 1%;
-    font-style: italic;
-    color: #0057FF;
-    cursor: pointer;
+    flex: 1;
+    flex-direction: column;
+    padding-bottom: 2vh;
 }
 
-/* LOGIN BUTTON */
-#login-btn {
+#confirm-password-label {
+    display: flex;
+    margin-bottom: 0.3vw;
+}
+
+#confirm-password-input {
+    display:flex;
+    height: 5vh;
+    border: solid black 0.1vw;
+    border-radius: 0.3vw;
+    font-size: 3vh;
+}
+
+/* REGISTER BUTTON */
+#register-btn {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -80,26 +91,26 @@
 }
 
 
-#login-btn:hover {
+#register-btn:hover {
     background: #1658ff radial-gradient(circle, transparent 1%, #034aff 1%) center/15000%;
 }
 
-#login-btn:active {
+#register-btn:active {
     background-color: #5888ff;
     background-size: 100%;
     transition: background 0s;
 }
 
-/* SIGN UP TEXT */
+/* SIGN IN TEXT */
 
-#signup-text {
+#signin-text {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     font-size: 1vw;
 }
 
-#signup-btn {
+#signin-btn {
     padding-left: 1%;
     color: #0066FF;
     cursor: pointer;

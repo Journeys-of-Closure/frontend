@@ -1,10 +1,23 @@
 import './NavBar.css'
-import LoginModal from '../../../pages/SignInPage/LoginModal';
+import LogRegisterModal from '../../../pages/SignInPage/LogRegisterModal';
 import useModal from '../../../hooks/useModal';
 import LoginForm from '../../form/LoginForm/LoginForm';
+import RegisterForm from '../../form/RegisterForm/RegisterForm';
+import { useState } from 'react';
 
 export function NavBar() {
     const { isOpen, toggle } = useModal();
+    const [isRegister, setIsRegister] = useState(false);
+
+    const handleToggleForm = () => {
+        setIsRegister(!isRegister);
+    };
+
+    function resetToLoginForm () {
+        toggle();
+        handleToggleForm();
+    }
+
     return (
         <>
             <div id='navbar'>
@@ -21,9 +34,9 @@ export function NavBar() {
                     <p>Login</p>
                 </div>
             </div>
-            <LoginModal isOpen={isOpen} toggle={toggle}>
-                <LoginForm />
-            </LoginModal>
+            <LogRegisterModal isOpen={isOpen} isRegister={isRegister} toggle={toggle} resetToLoginForm={resetToLoginForm}>
+                {isRegister ? <RegisterForm toggleForm={handleToggleForm}/> : <LoginForm toggleForm={handleToggleForm}/>}
+            </LogRegisterModal>
         </>
     );
 }
