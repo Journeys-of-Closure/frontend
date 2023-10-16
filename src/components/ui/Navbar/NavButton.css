@@ -1,0 +1,51 @@
+<<<<<<< HEAD
+.link-container {
+=======
+.navButton {
+>>>>>>> develop
+    flex: 1;
+    padding: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 2px 6px 4px rgba(0, 0, 0, 0.2); /* Horizontal offset, vertical offset, blur radius, and color */
+<<<<<<< HEAD
+    text-decoration: none;
+    color: #000;
+}
+
+.link-container:first-child {
+=======
+}
+
+.navButton:first-child {
+>>>>>>> develop
+    border: solid black 0.2vw;
+    border-top-left-radius: 1vw;
+    border-bottom-left-radius: 1vw;
+}
+
+<<<<<<< HEAD
+
+.link-container:nth-child(2), .navButton:nth-child(3) {
+=======
+.navButton:nth-child(2) {
+    border-right: solid black 0.2vw;
+}
+
+.navButton:nth-child(2), .navButton:nth-child(3) {
+>>>>>>> develop
+    border-top: solid black 0.2vw;
+    border-bottom: solid black 0.2vw;
+}
+
+<<<<<<< HEAD
+.link-container:last-child {
+=======
+.navButton:last-child {
+>>>>>>> develop
+    border: solid black 0.2vw;
+    border-top-right-radius: 1vw;
+    border-bottom-right-radius: 1vw;
+}
