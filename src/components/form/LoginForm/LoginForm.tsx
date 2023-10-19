@@ -1,13 +1,19 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../redux/store';
+import { loginUserSuccess, loginUserFailure } from '../../../redux/authSlice'; // Import loginUserSuccess and loginUserFailure actions
 import './LoginForm.css';
 
 interface LoginFormProps {
-  toggleForm: () => void; // Tipo da prop
+  toggleForm: () => void;
 }
 
 function LoginForm(prop: LoginFormProps) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const dispatch = useDispatch();
+  const authError = useSelector((state: RootState) => state.auth.error);
 
   const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
@@ -20,25 +26,13 @@ function LoginForm(prop: LoginFormProps) {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Send the username and password to the Node.js server for authentication
-    try {
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      });
-
-      if (response.ok) {
-        // TODO Handle successful login
-        console.log('Login successful');
-      } else {
-        // TODO Handle login failure (e.g., incorrect credentials)
-        console.log('Login failed');
-      }
-    } catch (error) {
-      console.error('Error:', error);
+    // Simulate a login request (replace with your actual authentication process)
+    if (username === 'validUsername' && password === 'validPassword') {
+      // Dispatch the login success action
+      dispatch(loginUserSuccess({ username }));
+    } else {
+      // Dispatch the login failure action with an error message
+      dispatch(loginUserFailure('Invalid username or password'));
     }
   };
 
@@ -68,6 +62,7 @@ function LoginForm(prop: LoginFormProps) {
         </div>
       </form>
       <button id="login-btn" type="submit">Login</button>
+      {authError && <div className="error-message">{authError}</div>}
       <div id="signup-text">
         <p>Don't have an account yet?</p> <p id="signup-btn" onClick={prop.toggleForm}> Sign Up </p>
       </div>
