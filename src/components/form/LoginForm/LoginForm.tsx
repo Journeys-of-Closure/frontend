@@ -2,18 +2,19 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import { toggleRegister } from '../../../redux/reducers/modalSlice';
-import { loginUserSuccess, loginUserFailure } from '../../../redux/reducers/authSlice'; // Import loginUserSuccess and loginUserFailure actions
+import { loginUserSuccess, loginUserFailure } from '../../../redux/reducers/authSlice';
+import { fakeLogin } from '../../../redux/reducers/authService';
 import './LoginForm.css';
 
 function LoginForm() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   const authError = useSelector((state: RootState) => state.auth.error);
 
   const dispatch = useDispatch();
 
   const setToRegisterForm = () => {
-    dispatch(toggleRegister())
+    dispatch(toggleRegister());
   }
 
   const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -27,13 +28,16 @@ function LoginForm() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Simulate a login request (replace with your actual authentication process)
-    if (username === 'validUsername' && password === 'validPassword') {
-      // Dispatch the login success action
-      dispatch(loginUserSuccess({ username }));
-    } else {
+    try {
+      // Simulate a login request
+      const user = await fakeLogin(username, password);
+
+      // Dispatch the login success action with the user data
+      dispatch(loginUserSuccess(user));
+      
+    } catch (error) {
       // Dispatch the login failure action with an error message
-      dispatch(loginUserFailure('Invalid username or password'));
+      dispatch(loginUserFailure(error));
     }
   };
 

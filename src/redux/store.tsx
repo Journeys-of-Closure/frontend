@@ -8,7 +8,7 @@ const store = configureStore({
     modal: modalReducer,
     auth: authReducer,
     // Add other reducers as needed
-  },
+  }
 });
 
 export type RootState = ReturnType<typeof store.getState>; // Define RootState here
