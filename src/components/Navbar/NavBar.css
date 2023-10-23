@@ -24,10 +24,6 @@
     transition: background 0.8s;
 }
 
-a:-moz-any-link{
-    display: block
-}
-
 .nav-btn:hover {
     background: #ffffff radial-gradient(circle, transparent 1%, #ffffff 1%) center/15000%;
 }
@@ -58,8 +54,4 @@ a:-moz-any-link{
     border: solid black 0.2vw;
     border-top-right-radius: 1vw;
     border-bottom-right-radius: 1vw;
-}
-
-.nav-btn.active {
-    background-color: #eeeeee;
 }

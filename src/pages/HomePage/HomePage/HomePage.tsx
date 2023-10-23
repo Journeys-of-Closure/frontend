@@ -1,5 +1,5 @@
-import NavBar from '../../components/Navbar/NavBar'
 import './HomePage.css';
+
 function HomeSection () {
     return (
         <>
@@ -25,7 +25,6 @@ function HomePage() {
   
     return (
       <>
-        <NavBar/>
         <HomeSection />
       </>
     );
