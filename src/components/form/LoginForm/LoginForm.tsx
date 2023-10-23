@@ -1,19 +1,20 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
-import { loginUserSuccess, loginUserFailure } from '../../../redux/authSlice'; // Import loginUserSuccess and loginUserFailure actions
+import { toggleRegister } from '../../../redux/reducers/modalSlice';
+import { loginUserSuccess, loginUserFailure } from '../../../redux/reducers/authSlice'; // Import loginUserSuccess and loginUserFailure actions
 import './LoginForm.css';
 
-interface LoginFormProps {
-  toggleForm: () => void;
-}
-
-function LoginForm(prop: LoginFormProps) {
+function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const authError = useSelector((state: RootState) => state.auth.error);
 
   const dispatch = useDispatch();
-  const authError = useSelector((state: RootState) => state.auth.error);
+
+  const setToRegisterForm = () => {
+    dispatch(toggleRegister())
+  }
 
   const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
@@ -64,7 +65,7 @@ function LoginForm(prop: LoginFormProps) {
       <button id="login-btn" type="submit">Login</button>
       {authError && <div className="error-message">{authError}</div>}
       <div id="signup-text">
-        <p>Don't have an account yet?</p> <p id="signup-btn" onClick={prop.toggleForm}> Sign Up </p>
+        <p>Don't have an account yet?</p> <p id="signup-btn" onClick={setToRegisterForm}> Sign Up </p>
       </div>
     </>
   );

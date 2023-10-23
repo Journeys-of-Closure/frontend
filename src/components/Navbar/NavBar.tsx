@@ -1,22 +1,19 @@
 import './NavBar.css'
-import LogRegisterModal from '../../pages/SignIn&UpModal/SignIn_UpModal';
-import useModal from '../../hooks/useModal';
+import SignIn_UpModal from '../../pages/SignIn&UpModal/SignIn_UpModal';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { RootState } from '../../redux/store';
+import { useDispatch, useSelector } from 'react-redux';
+import RegisterForm from '../form/RegisterForm/RegisterForm';
+import LoginForm from '../form/LoginForm/LoginForm';
+import { toggleModal } from '../../redux/reducers/modalSlice';
 
 export default function NavBar() {
-    const { isOpen, toggle } = useModal();
-    const [isRegister, setIsRegister] = useState(false);
+    const isRegister = useSelector((state: RootState) => state.modal.isRegister);
+    const dispatch = useDispatch();
 
-    const handleToggleForm = () => {
-        setIsRegister(!isRegister);
-    };
-
-    function resetToLoginForm () {
-        toggle();
-        handleToggleForm();
+    const openModal = () => {
+        dispatch(toggleModal());
     }
-
     return (
         <>
             <div id='navbar'>
@@ -29,9 +26,13 @@ export default function NavBar() {
                 <div className='nav-btn'>
                     <p>Help & Support</p>
                 </div>
-                <Link to="/login" className='nav-btn'> Login </Link>
+                <Link to="/login" className='nav-btn' onClick={openModal}>
+                    <p>Login</p>
+                </Link>
             </div>
-            <LogRegisterModal/>
+            <SignIn_UpModal>
+                {isRegister ? <RegisterForm/> : <LoginForm/>}
+            </SignIn_UpModal>
         </>
     );
 }

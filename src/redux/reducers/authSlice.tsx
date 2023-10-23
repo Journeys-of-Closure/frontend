@@ -8,6 +8,10 @@ const authSlice = createSlice({
     error: null, // Authentication error message
   },
   reducers: {
+    registerUserSuccess: (state, action) => {
+      state.user = action.payload; // Set the authenticated user after registration
+      state.error = null; // Clear any previous errors
+    },
     loginUserSuccess: (state, action) => {
       state.user = action.payload; // Set the authenticated user
       state.error = null; // Clear any previous errors
@@ -24,6 +28,7 @@ const authSlice = createSlice({
 });
 
 export const {
+  registerUserSuccess,
   loginUserSuccess,
   loginUserFailure,
   logoutUser,

@@ -1,17 +1,21 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import './RegisterForm.css'; // Update the CSS file name if needed
+import { RootState } from '../../../redux/store';
+import { toggleRegister } from '../../../redux/reducers/modalSlice';
+import { registerUserSuccess} from '../../../redux/reducers/authSlice';
+import { useDispatch } from 'react-redux';
 
-interface RegisterFormProps {
-  toggleForm: () => void; // Tipo da prop
-}
 
-
-function RegisterForm(prop: RegisterFormProps) {
+function RegisterForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordsMatch, setPasswordsMatch] = useState(true); // State to track password match
+  const dispatch = useDispatch();
 
+  const setToLoginForm = () => {
+    dispatch(toggleRegister());
+  }
   const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
   };
@@ -47,10 +51,12 @@ function RegisterForm(prop: RegisterFormProps) {
       });
 
       if (response.ok) {
-        // TODO Handle successful registration
+        // Registration successful, dispatch the action
+        const user = await response.json();
+        dispatch(registerUserSuccess(user));
         console.log('Registration successful');
       } else {
-        // TODO Handle registration failure (e.g., username already exists)
+        // Handle registration failure (e.g., username already exists)
         console.log('Registration failed');
       }
     } catch (error) {
@@ -97,7 +103,7 @@ function RegisterForm(prop: RegisterFormProps) {
       </form>
       <button id="register-btn" type="submit">Register</button>
       <div id="signin-text">
-        <p>Already have an account?</p> <p id="signin-btn" onClick={prop.toggleForm}> Log in </p>
+        <p>Already have an account?</p> <p id="signin-btn" onClick={setToLoginForm}> Log in </p>
       </div>
     </>
   );

@@ -15,20 +15,14 @@ const modalSlice = createSlice({
   name: 'modal',
   initialState,
   reducers: {
-    openModal: (state) => {
-      state.isOpen = true;
-    },
-    closeModal: (state) => {
-      state.isOpen = false;
+    toggleModal: (state) => {
+      state.isOpen = !state.isOpen;
     },
     toggleRegister: (state) => {
       state.isRegister = !state.isRegister;
     },
-    resetToLoginForm: (state) => {
-      state.isRegister = false;
-    },
   },
 });
 
-export const { openModal, closeModal, toggleRegister, resetToLoginForm } = modalSlice.actions;
+export const {toggleModal, toggleRegister} = modalSlice.actions;
 export default modalSlice.reducer;

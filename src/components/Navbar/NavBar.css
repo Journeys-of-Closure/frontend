@@ -24,6 +24,9 @@
     transition: background 0.8s;
 }
 
+a:-moz-any-link{
+    display: block
+}
 
 .nav-btn:hover {
     background: #ffffff radial-gradient(circle, transparent 1%, #ffffff 1%) center/15000%;
