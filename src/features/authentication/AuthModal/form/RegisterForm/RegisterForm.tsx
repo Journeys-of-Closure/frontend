@@ -1,27 +1,19 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import './RegisterForm.css'; // Update the CSS file name if needed
-import { RootState } from '../../../redux/store';
-import { toggleRegister } from '../../../redux/reducers/modalSlice';
-import { registerUserSuccess} from '../../../redux/reducers/authSlice';
+import './RegisterForm.css'; // Atualize o nome do arquivo CSS, se necessário
+import { toggleRegister } from '../../../../../redux/reducers/modalSlice';
+import { registerUserSuccess } from '../../../../../redux/reducers/authSlice';
 import { useDispatch } from 'react-redux';
+import { UserModel } from '../../../models/userModel'; // Importando o modelo de usuário
 
-
-function RegisterForm() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+// ViewModel - Lógica de negócios
+function useRegisterFormViewModel() {
+  const [user, setUser] = useState<UserModel>({ username: '', password: '' });
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [passwordsMatch, setPasswordsMatch] = useState(true); // State to track password match
+  const [passwordsMatch, setPasswordsMatch] = useState(true);
   const dispatch = useDispatch();
 
-  const setToLoginForm = () => {
-    dispatch(toggleRegister());
-  }
-  const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setUsername(e.target.value);
-  };
-
-  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
+  const handleUserChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const handleConfirmPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -31,37 +23,59 @@ function RegisterForm() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Check if passwords match
-    if (password !== confirmPassword) {
+    if (user.password !== confirmPassword) {
       setPasswordsMatch(false);
-      return; // Exit the function early if passwords don't match
+      return;
     }
 
-    // Clear the password mismatch message if previously shown
     setPasswordsMatch(true);
 
-    // Send the username and password to the Node.js server for registration
     try {
       const response = await fetch('/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify(user),
       });
 
       if (response.ok) {
-        // Registration successful, dispatch the action
-        const user = await response.json();
-        dispatch(registerUserSuccess(user));
-        console.log('Registration successful');
+        const newUser = await response.json();
+        dispatch(registerUserSuccess(newUser));
+        console.log('Registro realizado com sucesso');
       } else {
-        // Handle registration failure (e.g., username already exists)
-        console.log('Registration failed');
+        console.log('Falha no registro');
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Erro:', error);
     }
+  };
+
+  return {
+    user,
+    confirmPassword,
+    passwordsMatch,
+    handleUserChange,
+    handleConfirmPasswordChange,
+    handleSubmit,
+  };
+}
+
+// View - Componente de apresentação
+function RegisterForm() {
+  const {
+    user,
+    confirmPassword,
+    passwordsMatch,
+    handleUserChange,
+    handleConfirmPasswordChange,
+    handleSubmit,
+  } = useRegisterFormViewModel(); // Uso do ViewModel
+
+  const dispatch = useDispatch();
+
+  const setToLoginForm = () => {
+    dispatch(toggleRegister());
   };
 
   return (
@@ -72,8 +86,9 @@ function RegisterForm() {
           <input
             id="username-input"
             type="text"
-            value={username}
-            onChange={handleUsernameChange}
+            name="username"
+            value={user.username}
+            onChange={handleUserChange}
             required
           />
         </div>
@@ -82,8 +97,9 @@ function RegisterForm() {
           <input
             id="password-input"
             type="password"
-            value={password}
-            onChange={handlePasswordChange}
+            name="password"
+            value={user.password}
+            onChange={handleUserChange}
             required
           />
         </div>
@@ -98,10 +114,10 @@ function RegisterForm() {
           />
         </div>
         {!passwordsMatch && (
-          <p id="password-mismatch-message">Passwords do not match.</p>
+          <p id="password-mismatch-message">Senhas não conferem.</p>
         )}
       </form>
-      <button id="register-btn" type="submit">Register</button>
+      <button id="register-btn" type="submit">Registrar</button>
       <div id="signin-text">
         <p>Already have an account?</p> <p id="signin-btn" onClick={setToLoginForm}> Log in </p>
       </div>

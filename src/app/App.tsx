@@ -1,9 +1,9 @@
 // App.tsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage/HomePage/HomePage';
-import NavBar from './components/Navbar/NavBar';
-import AuthModal from './components/AuthModal/AuthModal';
+import HomePage from '../features/homeSection/HomePage/HomePage';
+import NavBar from '../components/Navbar/NavBar';
+import AuthModal from '../features/authentication/AuthModal/AuthModal';
 
 function App() {
   return (
