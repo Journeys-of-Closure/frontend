@@ -1,9 +1,9 @@
 // ModalContainer.tsx
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
-import { toggleModal, toggleRegister } from '../../redux/reducers/modalSlice';
-import RegisterForm from '../form/RegisterForm/RegisterForm';
-import LoginForm from '../form/LoginForm/LoginForm';
+import { RootState } from '../../../redux/store';
+import { toggleModal, toggleRegister } from '../../../redux/reducers/modalSlice';
+import RegisterForm from './form/RegisterForm/RegisterForm';
+import LoginForm from './form/LoginForm/LoginForm';
 
 import './AuthModal.css';
 
