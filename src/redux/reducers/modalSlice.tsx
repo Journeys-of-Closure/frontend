@@ -1,5 +1,5 @@
 // src/redux/modalSlice.ts
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 interface ModalState {
   isOpen: boolean;

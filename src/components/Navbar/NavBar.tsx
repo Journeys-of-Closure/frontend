@@ -1,6 +1,5 @@
 import './NavBar.css'
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { toggleModal } from '../../redux/reducers/modalSlice';
 
 export default function NavBar() {

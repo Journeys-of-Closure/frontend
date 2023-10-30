@@ -1,21 +1,17 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../redux/store';
-import { toggleRegister } from '../../../redux/reducers/modalSlice';
-import { loginUserSuccess, loginUserFailure } from '../../../redux/reducers/authSlice';
-import { fakeLogin } from '../../../redux/reducers/authService';
+import { RootState } from '../../../../../redux/store';
+import { toggleRegister } from '../../../../../redux/reducers/modalSlice';
+import { loginUserSuccess, loginUserFailure } from '../../../../../redux/reducers/authSlice';
+import { fakeLogin } from '../../../../../redux/reducers/authService';
 import './LoginForm.css';
 
-function LoginForm() {
+// ViewModel - Lógica de negócios
+function useLoginFormViewModel() {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const authError = useSelector((state: RootState) => state.auth.error);
-
   const dispatch = useDispatch();
-
-  const setToRegisterForm = () => {
-    dispatch(toggleRegister());
-  }
 
   const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
@@ -29,16 +25,38 @@ function LoginForm() {
     e.preventDefault();
 
     try {
-      // Simulate a login request
       const user = await fakeLogin(username, password);
-
-      // Dispatch the login success action with the user data
       dispatch(loginUserSuccess(user));
-      
     } catch (error) {
-      // Dispatch the login failure action with an error message
       dispatch(loginUserFailure(error));
     }
+  };
+
+  return {
+    username,
+    password,
+    authError,
+    handleUsernameChange,
+    handlePasswordChange,
+    handleSubmit,
+  };
+}
+
+// View - Componente de apresentação
+function LoginForm() {
+  const {
+    username,
+    password,
+    authError,
+    handleUsernameChange,
+    handlePasswordChange,
+    handleSubmit,
+  } = useLoginFormViewModel(); // Uso do ViewModel
+
+  const dispatch = useDispatch();
+
+  const setToRegisterForm = () => {
+    dispatch(toggleRegister());
   };
 
   return (
