@@ -117,7 +117,7 @@ function RegisterForm() {
           <p id="password-mismatch-message">Senhas não conferem.</p>
         )}
       </form>
-      <button id="register-btn" type="submit">Registrar</button>
+      <button id="register-btn" type="submit">Register</button>
       <div id="signin-text">
         <p>Already have an account?</p> <p id="signin-btn" onClick={setToLoginForm}> Log in </p>
       </div>
