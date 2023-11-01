@@ -4,8 +4,9 @@ import { RootState } from '../../../redux/store';
 import { toggleModal, toggleRegister } from '../../../redux/reducers/modalSlice';
 import RegisterForm from './form/RegisterForm/RegisterForm';
 import LoginForm from './form/LoginForm/LoginForm';
-
+import 'react-toastify/dist/ReactToastify.css';
 import './AuthModal.css';
+import { ToastContainer } from 'react-toastify';
 
 function AuthModal() {
     const isOpen = useSelector((state: RootState) => state.modal.isOpen);
@@ -31,6 +32,7 @@ function AuthModal() {
     <>
       {isOpen && (
         <div id="modal-overlay" onClick={onClickHandler}>
+          <ToastContainer/>
           <div id="modal-box" onClick={(e) => e.stopPropagation()}>
             {isRegister? <RegisterForm/> : <LoginForm/>}
           </div>
