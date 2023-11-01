@@ -4,14 +4,24 @@ import { toggleRegister } from '../../../../../redux/reducers/modalSlice';
 import { registerUserSuccess } from '../../../../../redux/reducers/authSlice';
 import { useDispatch } from 'react-redux';
 import { UserModel } from '../../../models/userModel'; // Importando o modelo de usuário
+import ConfirmationRegisterForm from '../ConfirmationRegisterForm/ConfirmationRegisterForm';
+import { toast } from 'react-toastify';
 
 // ViewModel - Lógica de negócios
 function useRegisterFormViewModel() {
   const [user, setUser] = useState<UserModel>({ username: '', password: '' });
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordsMatch, setPasswordsMatch] = useState(true);
+  const [showConfirmation, setShowConfirmation] = useState(false);
   const dispatch = useDispatch();
 
+  const notify = (authError:String) => {
+    if (authError) {
+      toast.error(authError, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
+  }
   const handleUserChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -25,9 +35,9 @@ function useRegisterFormViewModel() {
 
     if (user.password !== confirmPassword) {
       setPasswordsMatch(false);
+      notify('Senhas não conferem');
       return;
     }
-
     setPasswordsMatch(true);
 
     try {
@@ -44,10 +54,12 @@ function useRegisterFormViewModel() {
         dispatch(registerUserSuccess(newUser));
         console.log('Registro realizado com sucesso');
       } else {
+        setShowConfirmation(true); // Temporary till real auth implementation
         console.log('Falha no registro');
       }
     } catch (error) {
-      console.error('Erro:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Erro desconhecido';
+      notify(errorMessage);
     }
   };
 
@@ -55,6 +67,7 @@ function useRegisterFormViewModel() {
     user,
     confirmPassword,
     passwordsMatch,
+    showConfirmation,
     handleUserChange,
     handleConfirmPasswordChange,
     handleSubmit,
@@ -67,6 +80,7 @@ function RegisterForm() {
     user,
     confirmPassword,
     passwordsMatch,
+    showConfirmation,
     handleUserChange,
     handleConfirmPasswordChange,
     handleSubmit,
@@ -80,47 +94,48 @@ function RegisterForm() {
 
   return (
     <>
-      <form id="registerform-container" onSubmit={handleSubmit}>
-        <div id="username-container">
-          <label id="username-label">EMAIL:</label>
-          <input
-            id="username-input"
-            type="text"
-            name="username"
-            value={user.username}
-            onChange={handleUserChange}
-            required
-          />
-        </div>
-        <div id="password-container">
-          <label id="password-label">PASSWORD:</label>
-          <input
-            id="password-input"
-            type="password"
-            name="password"
-            value={user.password}
-            onChange={handleUserChange}
-            required
-          />
-        </div>
-        <div id="confirm-password-container">
-          <label id="confirm-password-label">CONFIRM PASSWORD:</label>
-          <input
-            id="confirm-password-input"
-            type="password"
-            value={confirmPassword}
-            onChange={handleConfirmPasswordChange}
-            required
-          />
-        </div>
-        {!passwordsMatch && (
-          <p id="password-mismatch-message">Senhas não conferem.</p>
-        )}
-      </form>
-      <button id="register-btn" type="submit">Register</button>
-      <div id="signin-text">
-        <p>Already have an account?</p> <p id="signin-btn" onClick={setToLoginForm}> Log in </p>
-      </div>
+      {showConfirmation ? (
+        <ConfirmationRegisterForm />
+      ) : (
+          <form id="registerform-container" onSubmit={handleSubmit}>
+            <div id="username-container">
+              <label id="username-label">EMAIL:</label>
+              <input
+                id="username-input"
+                type="text"
+                name="username"
+                value={user.username}
+                onChange={handleUserChange}
+                required
+              />
+            </div>
+            <div id="password-container">
+              <label id="password-label">PASSWORD:</label>
+              <input
+                id="password-input"
+                type="password"
+                name="password"
+                value={user.password}
+                onChange={handleUserChange}
+                required
+              />
+            </div>
+            <div id="confirm-password-container">
+              <label id="confirm-password-label">CONFIRM PASSWORD:</label>
+              <input
+                id="confirm-password-input"
+                type="password"
+                value={confirmPassword}
+                onChange={handleConfirmPasswordChange}
+                required
+              />
+            </div>
+            <button id="register-btn" type="submit">Register</button>
+          <div id="signin-text">
+            <p>Already have an account?</p> <p id="signin-btn" onClick={setToLoginForm}> Log in </p>
+          </div>
+          </form>
+      )}
     </>
   );
 }
