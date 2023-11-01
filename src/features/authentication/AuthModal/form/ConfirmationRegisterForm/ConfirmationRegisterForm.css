@@ -1,1 +1,15 @@
-/* TODO */
+#confirmationRegister-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0.5vw 0 0.5vw;
+}
+
+#confirmation-text {
+    display: flex;
+    text-align: center;
+    font-size: medium;
+    font-weight: 500;
+}
