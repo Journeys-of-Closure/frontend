@@ -1,3 +1,4 @@
+import React from 'react';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import './RegisterForm.css'; // Atualize o nome do arquivo CSS, se necessário
 import { toggleRegister } from '../../../../../redux/reducers/modalSlice';
@@ -15,7 +16,7 @@ function useRegisterFormViewModel() {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const dispatch = useDispatch();
 
-  const notify = (authError:String) => {
+  const notify = (authError: String) => {
     if (authError) {
       toast.error(authError, {
         position: toast.POSITION.TOP_RIGHT,
@@ -93,50 +94,50 @@ function RegisterForm() {
   };
 
   return (
-    <>
+    <React.Fragment>
       {showConfirmation ? (
         <ConfirmationRegisterForm />
       ) : (
-          <form id="registerform-container" onSubmit={handleSubmit}>
-            <div id="username-container">
-              <label id="username-label">EMAIL:</label>
-              <input
-                id="username-input"
-                type="text"
-                name="username"
-                value={user.username}
-                onChange={handleUserChange}
-                required
-              />
-            </div>
-            <div id="password-container">
-              <label id="password-label">PASSWORD:</label>
-              <input
-                id="password-input"
-                type="password"
-                name="password"
-                value={user.password}
-                onChange={handleUserChange}
-                required
-              />
-            </div>
-            <div id="confirm-password-container">
-              <label id="confirm-password-label">CONFIRM PASSWORD:</label>
-              <input
-                id="confirm-password-input"
-                type="password"
-                value={confirmPassword}
-                onChange={handleConfirmPasswordChange}
-                required
-              />
-            </div>
-            <button id="register-btn" type="submit">Register</button>
+        <form id="registerform-container" onSubmit={handleSubmit}>
+          <div id="username-container">
+            <label id="username-label">EMAIL:</label>
+            <input
+              id="username-input"
+              type="text"
+              name="username"
+              value={user.username}
+              onChange={handleUserChange}
+              required
+            />
+          </div>
+          <div id="password-container">
+            <label id="password-label">PASSWORD:</label>
+            <input
+              id="password-input"
+              type="password"
+              name="password"
+              value={user.password}
+              onChange={handleUserChange}
+              required
+            />
+          </div>
+          <div id="confirm-password-container">
+            <label id="confirm-password-label">CONFIRM PASSWORD:</label>
+            <input
+              id="confirm-password-input"
+              type="password"
+              value={confirmPassword}
+              onChange={handleConfirmPasswordChange}
+              required
+            />
+          </div>
+          <button id="register-btn" type="submit">Register</button>
           <div id="signin-text">
             <p>Already have an account?</p> <p id="signin-btn" onClick={setToLoginForm}> Log in </p>
           </div>
-          </form>
+        </form>
       )}
-    </>
+    </React.Fragment>
   );
 }
 
