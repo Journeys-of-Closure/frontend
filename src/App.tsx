@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './features/homeSection/HomePage/HomePage';
 import NavBar from './components/Navbar/NavBar';
 import AuthModal from './features/authentication/AuthModal/AuthModal';
-import api from './api/api';
+
 
 function App() {
   return (

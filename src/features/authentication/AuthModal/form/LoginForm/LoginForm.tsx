@@ -14,13 +14,7 @@ function useLoginFormViewModel() {
   const authError = useSelector((state: RootState) => state.auth.error);
   const dispatch = useDispatch();
 
-  const notify = () => {
-    if (authError) {
-      toast.error(authError, {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-    }
-  }
+  const notify = (authError: string) => toast(authError);
 
   const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
@@ -38,7 +32,8 @@ function useLoginFormViewModel() {
       dispatch(loginUserSuccess(user));
     } catch (error) {
       dispatch(loginUserFailure(error));
-      notify();
+      const errorMessage = error instanceof Error ? error.message : 'Erro desconhecido';
+      notify(errorMessage);
     }
   };
 
