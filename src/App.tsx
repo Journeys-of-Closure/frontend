@@ -1,9 +1,10 @@
 // App.tsx
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from '../features/homeSection/HomePage/HomePage';
-import NavBar from '../components/Navbar/NavBar';
-import AuthModal from '../features/authentication/AuthModal/AuthModal';
+import HomePage from './features/homeSection/HomePage/HomePage';
+import NavBar from './components/Navbar/NavBar';
+import AuthModal from './features/authentication/AuthModal/AuthModal';
+
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
         </Routes>
       </Router>
-      <AuthModal/>
+      <AuthModal />
     </div>
   );
 }
