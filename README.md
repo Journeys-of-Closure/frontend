@@ -1,6 +1,6 @@
 # Eternal Echoes
 
-Eternal Echoes is a unique and heartfelt project dedicated to preserving memories and celebrating the lives of loved ones. This repository contains the codebase for the web-based game interface powered by Unity, allowing users to create and share their cherished memories in a beautiful, interactive online environment.
+Eternal Echoes is a unique and heartfelt project dedicated to preserving memories and celebrating the lives of loved ones. This repository will contain the codebase for the web-based game interface powered by Unity, allowing users to create and share their cherished memories in a beautiful, interactive online environment.
 
 ## Table of Contents
 
