@@ -1,10 +1,8 @@
 // App.tsx
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './features/homeSection/HomePage/HomePage';
-import NavBar from './components/Navbar/NavBar';
-import AuthModal from './features/authentication/AuthModal/AuthModal';
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./features/homePage/HomePage";
+import NavBar from "./features/homePage/navBar/NavBar";
+import AuthModal from "./features/authentication/AuthModal/AuthModal";
 
 function App() {
   return (
