@@ -1,19 +1,18 @@
-# Eternal Echoes
+# Journeys of Closure
 
-Eternal Echoes is a unique and heartfelt project dedicated to preserving memories and celebrating the lives of loved ones. This repository will contain the codebase for the web-based game interface powered by Unity, allowing users to create and share their cherished memories in a beautiful, interactive online environment.
+Journeys of Closure is a unique and heartfelt project dedicated to preserving memories and celebrating the lives of loved ones. This repository will contain the codebase for the web-based game interface powered by Unity, allowing users to create and share their cherished memories in a beautiful, interactive online environment.
 
 ## Table of Contents
 
-- [About Eternal Echoes](#about-eternal-echoes)
+- [About Journeys of Closure](#about-journeys-of-closure)
 - [Features](#key-features)
 - [Mockup](#mockup)
-- [Contributing](#contributing)
 - [Acknowledgments](#acknowledgments)
 - [License](#license)
 
-## About Eternal Echoes
+## About Journeys of Closure
 
-Eternal Echoes is more than just a game; it's a digital memorial where users can create lasting tributes to their loved ones. With its captivating Unity-based web interface, this project provides a unique way to celebrate and remember the lives of those who have passed away.
+Journeys of Closure is more than just a game; it's a digital memorial where users can create lasting tributes to their loved ones. With its captivating Unity-based web interface, this project provides a unique way to celebrate and remember the lives of those who have passed away.
 
 ## Key Features
 
@@ -25,10 +24,7 @@ Eternal Echoes is more than just a game; it's a digital memorial where users can
 
 ## Mockup
 
-[Eternal Echoes - Figma Project](https://www.figma.com/file/iTZf53q4ofeS610Ktkux5n/Eternal-Echoes?type=design&node-id=0-1&mode=design&t=ohtFt6wGRLZ7nUo4-0)
-
-## Contributing
-Since this is a personal project created for me to apply and test my skills on development, until we reach a certain phase of productivity i'll be not accepting any contributions, but we are certainly welcome to contributions in the future to make Eternal Echoes even more special and meaningful. Feel free to open issues, create pull requests, or reach out to us with your ideas and suggestions.
+[Journeys of Closure - Figma Project](https://www.figma.com/file/iTZf53q4ofeS610Ktkux5n/Eternal-Echoes?type=design&node-id=0-1&mode=design&t=ohtFt6wGRLZ7nUo4-0)
 
 ## Acknowledgments
 We would like to express our gratitude to the open-source community and the creators of Unity for making this project possible. Additionally, we appreciate the support and contributions from our contributors and users.
