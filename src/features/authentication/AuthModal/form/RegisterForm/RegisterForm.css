@@ -1,117 +1,182 @@
 #registerform-container {
-    display:flex;
-    flex-direction: column;
-    flex-grow: 1;
-    margin: 0 0.5vw 0 0.5vw;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 0 0.5vw 0 0.5vw;
 }
 
 /* USERNAME */
 
 #username-container {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    justify-content: end;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: end;
 }
 
 #username-label {
-    display: flex;
-    margin-bottom: 0.3vw;
+  display: flex;
+  margin-bottom: 0.3vw;
 }
 
 #username-input {
-    display: flex;
-    height: 5vh;
-    border: solid black 0.1vw;
-    border-radius: 0.3vw;
-    font-size: 3vh;
+  display: flex;
+  height: 5vh;
+  border: solid black 0.1vw;
+  border-radius: 0.3vw;
+  font-size: 3vh;
 }
 
 /* PASSWORD*/
 
 #password-container {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #password-label {
-    display: flex;
-    margin-bottom: 0.3vw;
+  display: flex;
+  margin-bottom: 0.3vw;
 }
 
 #password-input {
-    display:flex;
-    height: 5vh;
-    border: solid black 0.1vw;
-    border-radius: 0.3vw;
-    font-size: 3vh;
+  display: flex;
+  height: 5vh;
+  border: solid black 0.1vw;
+  border-radius: 0.3vw;
+  font-size: 3vh;
 }
 
 /* CONFIRM PASSWORD*/
 
 #confirm-password-container {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    padding-bottom: 2vh;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding-bottom: 2vh;
 }
 
 #confirm-password-label {
-    display: flex;
-    margin-bottom: 0.3vw;
+  display: flex;
+  margin-bottom: 0.3vw;
 }
 
 #confirm-password-input {
-    display:flex;
-    height: 5vh;
-    border: solid black 0.1vw;
-    border-radius: 0.3vw;
-    font-size: 3vh;
+  display: flex;
+  height: 5vh;
+  border: solid black 0.1vw;
+  border-radius: 0.3vw;
+  font-size: 3vh;
 }
 
 /* REGISTER BUTTON */
 #register-btn {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    height: 5vh;
-    margin: 0 1.5vw 1vw 1.5vw;
-    background-color: #376FFF;
-    color: white;
-    border-style: none;
-    font-size: 1.3vw;
-    font-weight: 100;
-    border-radius: 0.2vw;
-    cursor: pointer;
-    background-position: center;
-    transition: background 0.8s;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  height: 5vh;
+  margin: 0 1.5vw 1vw 1.5vw;
+  background-color: #376fff;
+  color: white;
+  border-style: none;
+  font-size: 1.3vw;
+  font-weight: 100;
+  border-radius: 0.2vw;
+  cursor: pointer;
+  background-position: center;
+  transition: background 0.8s;
 }
 
-
 #register-btn:hover {
-    background: #1658ff radial-gradient(circle, transparent 1%, #034aff 1%) center/15000%;
+  background: #1658ff radial-gradient(circle, transparent 1%, #034aff 1%)
+    center/15000%;
 }
 
 #register-btn:active {
-    background-color: #5888ff;
-    background-size: 100%;
-    transition: background 0s;
+  background-color: #5888ff;
+  background-size: 100%;
+  transition: background 0s;
 }
 
 /* SIGN IN TEXT */
 
 #signin-text {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    font-size: 1vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 1vw;
 }
 
 #signin-btn {
-    padding-left: 1%;
-    color: #0066FF;
-    cursor: pointer;
+  padding-left: 1%;
+  color: #0066ff;
+  cursor: pointer;
 }
+
+/* Media Queries for Responsiveness */
+
+@media (max-width: 1024px) {
+  #username-label,
+  #password-label,
+  #confirm-password-label {
+    font-size: 2.5vh;
+  }
+
+  #register-btn {
+    font-size: 2vw;
+    height: 5.5vh;
+  }
+
+  #signin-text {
+    font-size: 2vw;
+  }
+}
+
+@media (max-width: 768px) {
+  #registerform-container {
+    margin: 0 1vw 0 1vw;
+  }
+
+  #username-input,
+  #password-input,
+  #confirm-password-input {
+    font-size: 2vh;
+    height: 6vh;
+  }
+
+  #register-btn {
+    font-size: 3vw;
+    height: 6vh;
+  }
+
+  #signin-text {
+    font-size: 3vw;
+  }
+}
+
+@media (max-width: 480px) {
+  #registerform-container {
+    margin: 0 2vw 0 2vw;
+  }
+
+  #username-input,
+  #password-input,
+  #confirm-password-input {
+    font-size: 1.8vh;
+    height: 6.5vh;
+  }
+
+  #register-btn {
+    font-size: 4vw;
+    height: 7vh;
+    margin: 0 2vw 1vw 2vw;
+  }
+
+  #signin-text {
+    font-size: 4vw;
+  }
+}
+
