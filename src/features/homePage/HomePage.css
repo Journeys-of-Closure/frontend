@@ -6,54 +6,200 @@ h2 {
 
 /* HOME SECTION */
 
-#homeBackgroundImg {
+#home-section {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
+#home-background-img {
+  display: flex;
   background-image: url("./assets/home_background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 
-  text-align: center;
+  align-items: center;
   justify-content: center;
 
   width: 100vw;
-  height: 100vh; /* 100% of the viewport height */
+  height: 100vh;
 }
 
-#homeSection {
+#home-content {
   text-align: center;
-  font-size: 4vw;
+  justify-content: center;
 }
 
-#homeTitle {
-  font-weight: 400;
+#home-title {
+  font-weight: 600;
+  text-align: center;
+  font-size: 5vw;
 }
 
-#homeSubtitle {
+#home-subtitle {
   font-weight: normal;
   font-size: 2.5vw;
 }
 
 /* OUR MISSION SECTION */
 
-#ourMissionSection {
+#our-mission-section {
   display: flex;
-  flex-direction: column;
+  color: white;
 
+  height: 100vh;
+}
+
+#mission-background-img {
+  position: relative;
+  display: flex;
+  top: 0;
+  left: 0;
   background-image: url("./assets/ourMission_background.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-
-  text-align: center;
-  justify-content: center;
-
   width: 100vw;
   height: 100vh; /* 100% of the viewport height */
+  justify-content: center;
+  align-items: center;
 }
 
-#missionText {
-  -webkit-text-fill-color: white;
+#mission-background-img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Adjust the rgba value to control the opacity and color */
+  z-index: 1;
+}
+
+#mission-content {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-top: 5vw;
+  z-index: 2;
+}
+
+#mission-title-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+#mission-title,
+#mission-subtitle {
+  margin: 0;
+  max-width: 45vw; /* Ensure both title and subtitle have the same max-width */
+}
+
+#mission-title {
+  font-size: 6vw;
+  margin-bottom: 1vh; /* Add space between title and subtitle */
+}
+
+#mission-subtitle {
+  font-size: 2vw; /* Adjust font-size as necessary */
+  font-weight: 400;
+  margin-right: 5vw;
+}
+
+#mission-subtext-row {
+  display: flex;
+  margin-top: 2vw;
+}
+
+#mission-subtext-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.mission-subtext {
+  display: flex;
+  margin: 1vw 15vw;
+  font-size: 2vw;
+}
+
+/* Media Queries for Responsiveness */
+
+@media (max-width: 1024px) {
+  #home-title {
+    font-size: 6vw;
+  }
+
+  #home-subtitle {
+    font-size: 3.5vw;
+  }
+
+  #mission-title {
+    font-size: 7vw;
+  }
+
+  #mission-subtitle {
+    font-size: 2.5vw;
+    margin-right: 3vw;
+  }
+
+  .mission-subtext {
+    margin: 1vw 10vw;
+    font-size: 2.5vw;
+  }
+}
+
+@media (max-width: 768px) {
+  #home-title {
+    font-size: 7vw;
+  }
+
+  #home-subtitle {
+    font-size: 4vw;
+  }
+
+  #mission-title {
+    font-size: 8vw;
+  }
+
+  #mission-subtitle {
+    font-size: 3vw;
+    margin-right: 2vw;
+  }
+
+  .mission-subtext {
+    margin: 1vw 8vw;
+    font-size: 3vw;
+  }
+}
+
+@media (max-width: 480px) {
+  #home-title {
+    font-size: 9vw;
+  }
+
+  #home-subtitle {
+    font-size: 5vw;
+  }
+
+  #mission-title {
+    font-size: 10vw;
+  }
+
+  #mission-subtitle {
+    font-size: 4vw;
+    margin-right: 1vw;
+  }
+
+  .mission-subtext {
+    margin: 1vw 5vw;
+    font-size: 4vw;
+  }
 }
