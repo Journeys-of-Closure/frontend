@@ -1,6 +1,7 @@
 import "./NavBar.css";
 import { useDispatch } from "react-redux";
-import { toggleModal } from "../../../redux/reducers/modalSlice";
+import { toggleModal } from "../../redux/reducers/modalSlice";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   const dispatch = useDispatch();
@@ -12,19 +13,22 @@ export default function NavBar() {
     <>
       <div id="navbar">
         <div className="nav-btn">
-          <p>Memorial Waters</p>
+          <Link to="/">
+            <p>HOME</p>
+          </Link>
         </div>
         <div className="nav-btn">
-          <p>Light of Giving</p>
+          <p>DONATE</p>
         </div>
         <div className="nav-btn">
-          <p>Help & Support</p>
+          <Link to="/about">
+            <p>ABOUT US</p>
+          </Link>
         </div>
         <div className="nav-btn" onClick={openModal}>
-          <p>Login</p>
+          <p>LOGIN</p>
         </div>
       </div>
     </>
   );
 }
-
