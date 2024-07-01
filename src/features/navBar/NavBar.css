@@ -25,6 +25,16 @@
   transition: background 0.8s;
 }
 
+.nav-btn a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit the color from the parent element */
+}
+
+.nav-btn p {
+  margin: 0;
+  color: black;
+}
+
 .nav-btn:hover {
   background: #ffffff radial-gradient(circle, transparent 1%, #ffffff 1%)
     center/15000%;
@@ -57,4 +67,3 @@
   border-top-right-radius: 1vw;
   border-bottom-right-radius: 1vw;
 }
-
